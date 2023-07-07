@@ -2,27 +2,27 @@
 SHOW DATABASES;
 
 # Create new database
-CREATE DATABASE learn_basic;
+CREATE DATABASE it_ticket_v1;
 
 # Select database to use
-USE learn_basic;
+USE it_ticket_v1;
 
 # Create new table
-CREATE TABLE barang (
+CREATE TABLE tickets (
     id INT,
-    nama VARCHAR(100),
-    harga INT,
-    jumlah INT
+    subject VARCHAR(200),
+    content TEXT
 )  ENGINE=INNODB;
-DESCRIBE barang;
-SHOW CREATE TABLE barang;
+DESCRIBE tickets;
+SHOW CREATE TABLE tickets;
 # End create new table
 
 # Edit created table
-ALTER TABLE barang ADD COLUMN deskripsi TEXT;
-ALTER TABLE barang ADD COLUMN test TEXT;
-ALTER TABLE barang DROP COLUMN test;
-ALTER TABLE barang MODIFY id INT NOT NULL;
-ALTER TABLE barang MODIFY nama VARCHAR(200) NOT NULL;
-ALTER TABLE barang MODIFY harga INT NOT NULL DEFAULT 0;
+ALTER TABLE tickets ADD COLUMN status VARCHAR(50);
+ALTER TABLE tickets ADD COLUMN test TEXT;
+ALTER TABLE tickets DROP COLUMN test;
+ALTER TABLE tickets MODIFY id INT NOT NULL;
+ALTER TABLE tickets MODIFY subject VARCHAR(200) NOT NULL;
+ALTER TABLE tickets MODIFY content TEXT NOT NULL;
+ALTER TABLE tickets MODIFY status VARCHAR(50) NOT NULL DEFAULT 'PENDING';
 #End edit create table
