@@ -42,3 +42,9 @@ SET
 WHERE
     id = 1;
 # END update data
+
+# Delete data
+DELETE FROM tickets 
+WHERE
+    id = 3;
+# END Delete data
