@@ -23,5 +23,22 @@ FROM
 # END add data
 
 # Add primary key
-ALTER TABLE tickets ADD PRIMARY KEY (id)
+ALTER TABLE tickets ADD PRIMARY KEY (id);
 # END add primary key
+
+# Update data
+SELECT 
+    *
+FROM
+    tickets;
+UPDATE tickets 
+SET 
+    status = 'PROCESS'
+WHERE
+    id = 1;
+    UPDATE tickets 
+SET 
+    content = CONCAT(content, '. Tepatnya pada halaman awal.')
+WHERE
+    id = 1;
+# END update data
