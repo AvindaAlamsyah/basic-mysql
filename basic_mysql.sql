@@ -2,7 +2,17 @@
 SHOW DATABASES;
 
 # Create new database
-CREATE DATABASE it_ticket_v1;
+CREATE DATABASE learn_basic;
 
 # Select database to use
-USE it_ticket_v1;
+USE learn_basic;
+
+# Create new table
+CREATE TABLE barang (
+    id INT,
+    nama VARCHAR(100),
+    harga INT,
+    jumlah INT
+)  ENGINE=INNODB;
+DESCRIBE barang;
+SHOW CREATE TABLE barang;
