@@ -21,3 +21,7 @@ SELECT
 FROM
     tickets;
 # END add data
+
+# Add primary key
+ALTER TABLE tickets ADD PRIMARY KEY (id)
+# END add primary key
