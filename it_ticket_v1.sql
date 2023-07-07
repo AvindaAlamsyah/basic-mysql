@@ -23,21 +23,14 @@ DROP TABLE IF EXISTS `tickets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tickets` (
-  `id` int(11) NOT NULL,
-  `subject` varchar(200) NOT NULL,
+  `id` int(10) unsigned DEFAULT NULL,
+  `subject` varchar(100) NOT NULL,
   `content` text NOT NULL,
-  `status` varchar(50) NOT NULL DEFAULT 'PENDING'
+  `status` enum('PENDING','PROCESS','COMPLETED') DEFAULT 'PENDING',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tickets`
---
-
-LOCK TABLES `tickets` WRITE;
-/*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -48,4 +41,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-07 14:19:49
+-- Dump completed on 2023-07-07 15:19:23
