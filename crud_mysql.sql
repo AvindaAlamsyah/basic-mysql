@@ -70,3 +70,21 @@ FROM
     tickets
 WHERE
     updated_at IS NULL;
+# END alias and where operator
+
+# Order by and limit
+INSERT INTO tickets (id, subject, content)
+VALUES (4, 'Server Down', 'Mohon cek apakah server saat ini sedang down'),
+(5, 'Tambahkan Email', 'Mohon buat email baru dengan alamat admin@example.com');
+UPDATE tickets 
+SET 
+    status = 'COMPLETED'
+WHERE
+    id = 4;
+SELECT 
+    *
+FROM
+    tickets
+ORDER BY status DESC
+LIMIT 2;
+# END order by and limit
