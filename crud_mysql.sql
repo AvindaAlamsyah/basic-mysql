@@ -24,9 +24,6 @@ FROM
 
 # Add primary key
 ALTER TABLE tickets ADD PRIMARY KEY (id);
-# END add primary key
-
-# Update data
 SELECT 
     *
 FROM
@@ -36,15 +33,40 @@ SET
     status = 'PROCESS'
 WHERE
     id = 1;
-    UPDATE tickets 
+UPDATE tickets 
 SET 
     content = CONCAT(content, '. Tepatnya pada halaman awal.')
 WHERE
     id = 1;
-# END update data
-
-# Delete data
 DELETE FROM tickets 
 WHERE
     id = 3;
-# END Delete data
+    
+# Alias and where operator
+SELECT 
+    tix.*
+FROM
+    tickets AS tix;
+SELECT 
+    tix.subject AS Judul, tix.content AS Detail
+FROM
+    tickets AS tix;
+SELECT 
+    *
+FROM
+    tickets
+WHERE
+    status <> 'PENDING'
+        OR created_at <= NOW();
+SELECT 
+    *
+FROM
+    tickets
+WHERE
+    content LIKE '%search%';
+SELECT 
+    *
+FROM
+    tickets
+WHERE
+    updated_at IS NULL;
