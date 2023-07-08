@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `inventory_v1` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `inventory_v1`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: it_ticket_v1
+-- Host: 127.0.0.1    Database: inventory_v1
 -- ------------------------------------------------------
 -- Server version	5.7.41
 
@@ -16,17 +18,17 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tickets`
+-- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `tickets`;
+DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tickets` (
-  `id` int(10) unsigned DEFAULT NULL,
-  `subject` varchar(100) NOT NULL,
-  `content` text NOT NULL,
-  `status` enum('PENDING','PROCESS','COMPLETED') DEFAULT 'PENDING',
+CREATE TABLE `products` (
+  `id` int(10) unsigned NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `category` varchar(50) NOT NULL,
+  `price` int(11) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -42,4 +44,4 @@ CREATE TABLE `tickets` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-07 15:19:23
+-- Dump completed on 2023-07-08 11:11:09

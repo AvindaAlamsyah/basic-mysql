@@ -2,27 +2,25 @@
 SHOW DATABASES;
 
 # Create new database
-CREATE DATABASE it_ticket_v1;
+CREATE DATABASE inventory_v1;
 
 # Select database to use
-USE it_ticket_v1;
+USE inventory_v1;
 
-# Create new table
-CREATE TABLE tickets (
+CREATE TABLE products (
     id INT,
-    subject VARCHAR(200),
-    content TEXT
+    name VARCHAR(50),
+    price INT
 )  ENGINE=INNODB;
-DESCRIBE tickets;
-SHOW CREATE TABLE tickets;
+DESCRIBE products;
+SHOW CREATE TABLE products;
 # End create new table
 
 # Edit created table
-ALTER TABLE tickets ADD COLUMN status VARCHAR(50);
-ALTER TABLE tickets ADD COLUMN test TEXT;
-ALTER TABLE tickets DROP COLUMN test;
-ALTER TABLE tickets MODIFY id INT NOT NULL;
-ALTER TABLE tickets MODIFY subject VARCHAR(200) NOT NULL;
-ALTER TABLE tickets MODIFY content TEXT NOT NULL;
-ALTER TABLE tickets MODIFY status VARCHAR(50) NOT NULL DEFAULT 'PENDING';
+ALTER TABLE products ADD COLUMN description TEXT;
+ALTER TABLE products ADD COLUMN test TEXT;
+ALTER TABLE products DROP COLUMN test;
+ALTER TABLE products MODIFY id INT NOT NULL;
+ALTER TABLE products MODIFY name VARCHAR(100) NOT NULL;
+ALTER TABLE products MODIFY price INT DEFAULT 0;
 #End edit create table

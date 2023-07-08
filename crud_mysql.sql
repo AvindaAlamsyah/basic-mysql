@@ -1,90 +1,90 @@
-# Recreate table tickets
-DROP TABLE tickets;
-CREATE TABLE tickets (
-    id INT UNSIGNED,
-    subject VARCHAR(100) NOT NULL,
-    content TEXT NOT NULL,
-    status ENUM('PENDING', 'PROCESS', 'COMPLETED') DEFAULT 'PENDING',
+# Recreate table products
+DROP TABLE products;
+
+CREATE TABLE products (
+    id INT UNSIGNED NOT NULL,
+    name VARCHAR(100),
+    price INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )  ENGINE=INNODB;
-# END recreate table ticket
+# END recreate table products
 
 # Add data
-INSERT INTO tickets(id, subject, content) 
-VALUES (1, 'Membuat Fitur Filter', 'Mohon tambahkan fitur filter pada menu tiket');
-INSERT INTO tickets(id, subject, content) 
-VALUES (2, 'Membuat Fitur Search', 'Mohon tambahkan fitur search pada menu tiket'), 
-(3, 'Menghilangkan Kolom Update At', 'Mohon hilangkan kolom update at pada menu tiket');
+INSERT INTO products(id, name, price) 
+VALUES (1, 'Laptop Dell i5', 6850000);
+INSERT INTO products(id, name, price) 
+VALUES (2, 'Laptop Huawei Matebook i7', 8500000), 
+(3, 'Printer Canon MF244DW', 4500000);
 SELECT 
     *
 FROM
-    tickets;
+    products;
 # END add data
 
 # Add primary key
-ALTER TABLE tickets ADD PRIMARY KEY (id);
+ALTER TABLE products ADD PRIMARY KEY (id);
 SELECT 
     *
 FROM
-    tickets;
-UPDATE tickets 
+    products;
+UPDATE products 
 SET 
-    status = 'PROCESS'
+    price = 7000000
 WHERE
     id = 1;
-UPDATE tickets 
+UPDATE products 
 SET 
-    content = CONCAT(content, '. Tepatnya pada halaman awal.')
+    price = price + 350000
 WHERE
-    id = 1;
-DELETE FROM tickets 
+    id = 2;
+DELETE FROM products 
 WHERE
     id = 3;
     
-# Alias and where operator
 SELECT 
-    tix.*
+    prod.*
 FROM
-    tickets AS tix;
+    products AS prod;
 SELECT 
-    tix.subject AS Judul, tix.content AS Detail
+    prod.name AS 'NAMA BARANG', prod.price AS 'HARGA BARANG'
 FROM
-    tickets AS tix;
-SELECT 
-    *
-FROM
-    tickets
+    products AS prod;
+ALTER TABLE products ADD COLUMN category VARCHAR(50) NOT NULL AFTER name;
+UPDATE products 
+SET 
+    category = 'LAPTOP'
 WHERE
-    status <> 'PENDING'
-        OR created_at <= NOW();
+    id IN (1 , 2);
 SELECT 
     *
 FROM
-    tickets
+    products
 WHERE
-    content LIKE '%search%';
+    category = 'LAPTOP'
+        AND price > 7000000;
 SELECT 
     *
 FROM
-    tickets
+    products
+WHERE
+    name LIKE '%dell%';
+SELECT 
+    *
+FROM
+    products
 WHERE
     updated_at IS NULL;
 # END alias and where operator
 
 # Order by and limit
-INSERT INTO tickets (id, subject, content)
-VALUES (4, 'Server Down', 'Mohon cek apakah server saat ini sedang down'),
-(5, 'Tambahkan Email', 'Mohon buat email baru dengan alamat admin@example.com');
-UPDATE tickets 
-SET 
-    status = 'COMPLETED'
-WHERE
-    id = 4;
+INSERT INTO products (id, name, price, category)
+VALUES (3, 'Printer Canon MF244DW', 4250000, 'PRINTER'),
+(4, 'Router TP-Link WR840N', 400000, 'ROUTER');
 SELECT 
     *
 FROM
-    tickets
-ORDER BY status DESC
+    products
+ORDER BY price ASC
 LIMIT 2;
 # END order by and limit
