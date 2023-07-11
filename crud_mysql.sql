@@ -112,5 +112,14 @@ SELECT
             'MAHAL',
             'TERLALU MAHAL')) AS tag
 FROM
-    products
+    products;
 # END flow control function
+
+# Group by and having clause
+SELECT 
+    category, COUNT(id) AS total, SUM(price) AS total_harga
+FROM
+    products
+GROUP BY category
+HAVING total > 1;
+# END group by and having clause
