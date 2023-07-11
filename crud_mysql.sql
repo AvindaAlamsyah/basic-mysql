@@ -91,4 +91,26 @@ LIMIT 2;
 
 # Add auto increment on table
 ALTER TABLE products MODIFY COLUMN id INT UNSIGNED AUTO_INCREMENT;
-# end add auto increment on table
+# END add auto increment on table
+
+# Flow control function
+SELECT 
+    name,
+    CASE category
+        WHEN 'LAPTOP' THEN 'VALUABLE'
+        ELSE 'NOT VALUABLE'
+    END AS type
+FROM
+    products;
+    
+SELECT 
+    name,
+    price,
+    IF(price <= 1000000,
+        'MURAH',
+        IF(price <= 5000000,
+            'MAHAL',
+            'TERLALU MAHAL')) AS tag
+FROM
+    products
+# END flow control function
