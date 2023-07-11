@@ -88,3 +88,7 @@ FROM
 ORDER BY price ASC
 LIMIT 2;
 # END order by and limit
+
+# Add auto increment on table
+ALTER TABLE products MODIFY COLUMN id INT UNSIGNED AUTO_INCREMENT;
+# end add auto increment on table
