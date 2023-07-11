@@ -123,3 +123,12 @@ FROM
 GROUP BY category
 HAVING total > 1;
 # END group by and having clause
+
+# Add constraint
+ALTER TABLE products ADD CONSTRAINT name_unique UNIQUE (name);
+SELECT 
+    *
+FROM
+    products;
+INSERT INTO products(name, category, price) VALUES('Laptop Dell i5', 'LAPTOP', 9000000);
+# END constraint
